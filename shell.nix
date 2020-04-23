@@ -9,6 +9,7 @@ mkShell {
     rustPackages.clippy
     rustPackages.rustfmt
     rustlings
+    rls
   ];
   shellHook = ''
     export RUST_SRC_PATH="${rustPlatform.rustcSrc}"
