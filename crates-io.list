@@ -1,4 +1,3 @@
-aho-corasick-0.6.10
 aho-corasick-0.7.3
 ansi_term-0.11.0
 assert_cmd-0.11.1
@@ -7,11 +6,10 @@ autocfg-0.1.4
 bitflags-1.0.4
 cfg-if-0.1.9
 clap-2.33.0
-clicolors-control-0.2.0
 clicolors-control-1.0.0
 cloudabi-0.0.3
-console-0.6.2
-console-0.7.5
+console-0.7.7
+console-0.8.0
 difference-2.0.0
 encode_unicode-0.3.5
 escargot-0.4.0
@@ -23,13 +21,12 @@ fuchsia-cprng-0.1.1
 fuchsia-zircon-0.3.3
 fuchsia-zircon-sys-0.3.3
 glob-0.3.0
-indicatif-0.9.0
-inotify-0.6.1
+indicatif-0.10.3
+inotify-0.7.0
 inotify-sys-0.1.3
 iovec-0.1.2
 itoa-0.4.4
 kernel32-sys-0.2.2
-lazy_static-0.2.11
 lazy_static-1.3.0
 lazycell-1.2.1
 libc-0.2.58
@@ -41,8 +38,9 @@ mio-extras-2.0.5
 miow-0.2.1
 net2-0.2.33
 normalize-line-endings-0.2.2
-notify-4.0.12
+notify-4.0.15
 num-traits-0.2.8
+number_prefix-0.2.8
 numtoa-0.1.0
 parking_lot-0.8.0
 parking_lot_core-0.5.0
@@ -64,9 +62,7 @@ rand_xorshift-0.1.1
 rdrand-0.4.0
 redox_syscall-0.1.54
 redox_termios-0.1.1
-regex-0.2.11
 regex-1.1.6
-regex-syntax-0.5.6
 regex-syntax-0.6.6
 rustc_version-0.2.3
 ryu-0.2.8
@@ -94,7 +90,7 @@ utf8-ranges-1.0.2
 vec_map-0.8.1
 walkdir-2.2.7
 winapi-0.2.8
-winapi-0.3.7
+winapi-0.3.8
 winapi-build-0.1.1
 winapi-i686-pc-windows-gnu-0.4.0
 winapi-util-0.1.2

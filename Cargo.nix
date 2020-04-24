@@ -7,46 +7,46 @@ let inherit (lib.lists) fold;
 in
 rec {
   crates = cratesIO // rec {
-# rustlings-2.1.0
+# rustlings-3.0.0
 
-    crates.rustlings."2.1.0" = deps: { features?(features_.rustlings."2.1.0" deps {}) }: buildRustCrate {
+    crates.rustlings."3.0.0" = deps: { features?(features_.rustlings."3.0.0" deps {}) }: buildRustCrate {
       crateName = "rustlings";
-      version = "2.1.0";
-      authors = [ "Marisa <mokou@posteo.de>" "Carol (Nichols || Goulding) <carol.nichols@gmail.com" ];
+      version = "3.0.0";
+      authors = [ "Marisa <mokou@posteo.de>" "Carol (Nichols || Goulding) <carol.nichols@gmail.com>" ];
       edition = "2018";
       src = exclude [ ".git" "target" ] ./.;
       crateBin =
         [{  name = "rustlings";  path = "src/main.rs"; }];
       dependencies = mapFeatures features ([
-        (cratesIO.crates."clap"."${deps."rustlings"."2.1.0"."clap"}" deps)
-        (cratesIO.crates."console"."${deps."rustlings"."2.1.0"."console"}" deps)
-        (cratesIO.crates."indicatif"."${deps."rustlings"."2.1.0"."indicatif"}" deps)
-        (cratesIO.crates."notify"."${deps."rustlings"."2.1.0"."notify"}" deps)
-        (cratesIO.crates."regex"."${deps."rustlings"."2.1.0"."regex"}" deps)
-        (cratesIO.crates."serde"."${deps."rustlings"."2.1.0"."serde"}" deps)
-        (cratesIO.crates."toml"."${deps."rustlings"."2.1.0"."toml"}" deps)
+        (cratesIO.crates."clap"."${deps."rustlings"."3.0.0"."clap"}" deps)
+        (cratesIO.crates."console"."${deps."rustlings"."3.0.0"."console"}" deps)
+        (cratesIO.crates."indicatif"."${deps."rustlings"."3.0.0"."indicatif"}" deps)
+        (cratesIO.crates."notify"."${deps."rustlings"."3.0.0"."notify"}" deps)
+        (cratesIO.crates."regex"."${deps."rustlings"."3.0.0"."regex"}" deps)
+        (cratesIO.crates."serde"."${deps."rustlings"."3.0.0"."serde"}" deps)
+        (cratesIO.crates."toml"."${deps."rustlings"."3.0.0"."toml"}" deps)
       ]);
     };
-    features_.rustlings."2.1.0" = deps: f: updateFeatures f (rec {
-      clap."${deps.rustlings."2.1.0".clap}".default = true;
-      console."${deps.rustlings."2.1.0".console}".default = true;
-      indicatif."${deps.rustlings."2.1.0".indicatif}".default = true;
-      notify."${deps.rustlings."2.1.0".notify}".default = true;
-      regex."${deps.rustlings."2.1.0".regex}".default = true;
-      rustlings."2.1.0".default = (f.rustlings."2.1.0".default or true);
+    features_.rustlings."3.0.0" = deps: f: updateFeatures f (rec {
+      clap."${deps.rustlings."3.0.0".clap}".default = true;
+      console."${deps.rustlings."3.0.0".console}".default = true;
+      indicatif."${deps.rustlings."3.0.0".indicatif}".default = true;
+      notify."${deps.rustlings."3.0.0".notify}".default = true;
+      regex."${deps.rustlings."3.0.0".regex}".default = true;
+      rustlings."3.0.0".default = (f.rustlings."3.0.0".default or true);
       serde = fold recursiveUpdate {} [
-        { "${deps.rustlings."2.1.0".serde}"."derive" = true; }
-        { "${deps.rustlings."2.1.0".serde}".default = true; }
+        { "${deps.rustlings."3.0.0".serde}"."derive" = true; }
+        { "${deps.rustlings."3.0.0".serde}".default = true; }
       ];
-      toml."${deps.rustlings."2.1.0".toml}".default = true;
+      toml."${deps.rustlings."3.0.0".toml}".default = true;
     }) [
-      (cratesIO.features_.clap."${deps."rustlings"."2.1.0"."clap"}" deps)
-      (cratesIO.features_.console."${deps."rustlings"."2.1.0"."console"}" deps)
-      (cratesIO.features_.indicatif."${deps."rustlings"."2.1.0"."indicatif"}" deps)
-      (cratesIO.features_.notify."${deps."rustlings"."2.1.0"."notify"}" deps)
-      (cratesIO.features_.regex."${deps."rustlings"."2.1.0"."regex"}" deps)
-      (cratesIO.features_.serde."${deps."rustlings"."2.1.0"."serde"}" deps)
-      (cratesIO.features_.toml."${deps."rustlings"."2.1.0"."toml"}" deps)
+      (cratesIO.features_.clap."${deps."rustlings"."3.0.0"."clap"}" deps)
+      (cratesIO.features_.console."${deps."rustlings"."3.0.0"."console"}" deps)
+      (cratesIO.features_.indicatif."${deps."rustlings"."3.0.0"."indicatif"}" deps)
+      (cratesIO.features_.notify."${deps."rustlings"."3.0.0"."notify"}" deps)
+      (cratesIO.features_.regex."${deps."rustlings"."3.0.0"."regex"}" deps)
+      (cratesIO.features_.serde."${deps."rustlings"."3.0.0"."serde"}" deps)
+      (cratesIO.features_.toml."${deps."rustlings"."3.0.0"."toml"}" deps)
     ];
 
 
@@ -54,16 +54,13 @@ rec {
 
   };
 
-  rustlings = crates.crates.rustlings."2.1.0" deps;
+  rustlings = crates.crates.rustlings."3.0.0" deps;
   __all = [ (rustlings {}) ];
-  deps.aho_corasick."0.6.10" = {
-    memchr = "2.2.0";
-  };
   deps.aho_corasick."0.7.3" = {
     memchr = "2.2.0";
   };
   deps.ansi_term."0.11.0" = {
-    winapi = "0.3.7";
+    winapi = "0.3.8";
   };
   deps.assert_cmd."0.11.1" = {
     escargot = "0.4.0";
@@ -74,7 +71,7 @@ rec {
   deps.atty."0.2.11" = {
     termion = "1.5.2";
     libc = "0.2.58";
-    winapi = "0.3.7";
+    winapi = "0.3.8";
   };
   deps.autocfg."0.1.4" = {};
   deps.bitflags."1.0.4" = {};
@@ -88,33 +85,16 @@ rec {
     vec_map = "0.8.1";
     ansi_term = "0.11.0";
   };
-  deps.clicolors_control."0.2.0" = {
-    lazy_static = "0.2.11";
-    libc = "0.2.58";
-    kernel32_sys = "0.2.2";
-    winapi = "0.3.7";
-  };
   deps.clicolors_control."1.0.0" = {
     lazy_static = "1.3.0";
     libc = "0.2.58";
     atty = "0.2.11";
-    winapi = "0.3.7";
+    winapi = "0.3.8";
   };
   deps.cloudabi."0.0.3" = {
     bitflags = "1.0.4";
   };
-  deps.console."0.6.2" = {
-    atty = "0.2.11";
-    clicolors_control = "0.2.0";
-    lazy_static = "1.3.0";
-    libc = "0.2.58";
-    parking_lot = "0.8.0";
-    regex = "1.1.6";
-    unicode_width = "0.1.5";
-    termios = "0.3.1";
-    winapi = "0.3.7";
-  };
-  deps.console."0.7.5" = {
+  deps.console."0.7.7" = {
     atty = "0.2.11";
     clicolors_control = "1.0.0";
     lazy_static = "1.3.0";
@@ -124,7 +104,17 @@ rec {
     unicode_width = "0.1.5";
     termios = "0.3.1";
     encode_unicode = "0.3.5";
-    winapi = "0.3.7";
+    winapi = "0.3.8";
+  };
+  deps.console."0.8.0" = {
+    clicolors_control = "1.0.0";
+    lazy_static = "1.3.0";
+    libc = "0.2.58";
+    regex = "1.1.6";
+    unicode_width = "0.1.5";
+    termios = "0.3.1";
+    encode_unicode = "0.3.5";
+    winapi = "0.3.8";
   };
   deps.difference."2.0.0" = {};
   deps.encode_unicode."0.3.5" = {};
@@ -156,13 +146,14 @@ rec {
   };
   deps.fuchsia_zircon_sys."0.3.3" = {};
   deps.glob."0.3.0" = {};
-  deps.indicatif."0.9.0" = {
-    console = "0.7.5";
-    lazy_static = "0.2.11";
+  deps.indicatif."0.10.3" = {
+    console = "0.8.0";
+    lazy_static = "1.3.0";
+    number_prefix = "0.2.8";
     parking_lot = "0.8.0";
-    regex = "0.2.11";
+    regex = "1.1.6";
   };
-  deps.inotify."0.6.1" = {
+  deps.inotify."0.7.0" = {
     bitflags = "1.0.4";
     inotify_sys = "0.1.3";
     libc = "0.2.58";
@@ -179,7 +170,6 @@ rec {
     winapi = "0.2.8";
     winapi_build = "0.1.1";
   };
-  deps.lazy_static."0.2.11" = {};
   deps.lazy_static."1.3.0" = {};
   deps.lazycell."1.2.1" = {};
   deps.libc."0.2.58" = {};
@@ -217,24 +207,26 @@ rec {
   deps.net2."0.2.33" = {
     cfg_if = "0.1.9";
     libc = "0.2.58";
-    winapi = "0.3.7";
+    winapi = "0.3.8";
   };
   deps.normalize_line_endings."0.2.2" = {};
-  deps.notify."4.0.12" = {
+  deps.notify."4.0.15" = {
     bitflags = "1.0.4";
     filetime = "0.2.5";
     libc = "0.2.58";
     walkdir = "2.2.7";
-    inotify = "0.6.1";
+    inotify = "0.7.0";
     mio = "0.6.19";
     mio_extras = "2.0.5";
     fsevent = "0.4.0";
     fsevent_sys = "2.0.1";
-    kernel32_sys = "0.2.2";
-    winapi = "0.3.7";
+    winapi = "0.3.8";
   };
   deps.num_traits."0.2.8" = {
     autocfg = "0.1.4";
+  };
+  deps.number_prefix."0.2.8" = {
+    num_traits = "0.2.8";
   };
   deps.numtoa."0.1.0" = {};
   deps.parking_lot."0.8.0" = {
@@ -250,7 +242,7 @@ rec {
     cloudabi = "0.0.3";
     redox_syscall = "0.1.54";
     libc = "0.2.58";
-    winapi = "0.3.7";
+    winapi = "0.3.8";
   };
   deps.predicates."1.0.1" = {
     difference = "2.0.0";
@@ -281,7 +273,7 @@ rec {
     rand_xorshift = "0.1.1";
     autocfg = "0.1.4";
     libc = "0.2.58";
-    winapi = "0.3.7";
+    winapi = "0.3.8";
   };
   deps.rand_chacha."0.1.1" = {
     rand_core = "0.3.1";
@@ -300,7 +292,7 @@ rec {
   deps.rand_jitter."0.1.4" = {
     rand_core = "0.4.0";
     libc = "0.2.58";
-    winapi = "0.3.7";
+    winapi = "0.3.8";
   };
   deps.rand_os."0.1.3" = {
     rand_core = "0.4.0";
@@ -308,7 +300,7 @@ rec {
     cloudabi = "0.0.3";
     fuchsia_cprng = "0.1.1";
     libc = "0.2.58";
-    winapi = "0.3.7";
+    winapi = "0.3.8";
   };
   deps.rand_pcg."0.1.2" = {
     rand_core = "0.4.0";
@@ -324,13 +316,6 @@ rec {
   deps.redox_termios."0.1.1" = {
     redox_syscall = "0.1.54";
   };
-  deps.regex."0.2.11" = {
-    aho_corasick = "0.6.10";
-    memchr = "2.2.0";
-    regex_syntax = "0.5.6";
-    thread_local = "0.3.6";
-    utf8_ranges = "1.0.2";
-  };
   deps.regex."1.1.6" = {
     aho_corasick = "0.7.3";
     memchr = "2.2.0";
@@ -338,20 +323,17 @@ rec {
     thread_local = "0.3.6";
     utf8_ranges = "1.0.2";
   };
-  deps.regex_syntax."0.5.6" = {
-    ucd_util = "0.1.3";
-  };
   deps.regex_syntax."0.6.6" = {
     ucd_util = "0.1.3";
   };
   deps.rustc_version."0.2.3" = {
     semver = "0.9.0";
   };
-  deps.rustlings."2.1.0" = {
+  deps.rustlings."3.0.0" = {
     clap = "2.33.0";
-    console = "0.6.2";
-    indicatif = "0.9.0";
-    notify = "4.0.12";
+    console = "0.7.7";
+    indicatif = "0.10.3";
+    notify = "4.0.15";
     regex = "1.1.6";
     serde = "1.0.92";
     toml = "0.4.10";
@@ -412,18 +394,18 @@ rec {
   deps.vec_map."0.8.1" = {};
   deps.walkdir."2.2.7" = {
     same_file = "1.0.4";
-    winapi = "0.3.7";
+    winapi = "0.3.8";
     winapi_util = "0.1.2";
   };
   deps.winapi."0.2.8" = {};
-  deps.winapi."0.3.7" = {
+  deps.winapi."0.3.8" = {
     winapi_i686_pc_windows_gnu = "0.4.0";
     winapi_x86_64_pc_windows_gnu = "0.4.0";
   };
   deps.winapi_build."0.1.1" = {};
   deps.winapi_i686_pc_windows_gnu."0.4.0" = {};
   deps.winapi_util."0.1.2" = {
-    winapi = "0.3.7";
+    winapi = "0.3.8";
   };
   deps.winapi_x86_64_pc_windows_gnu."0.4.0" = {};
   deps.ws2_32_sys."0.2.1" = {
