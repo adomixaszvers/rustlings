@@ -7,46 +7,46 @@ let inherit (lib.lists) fold;
 in
 rec {
   crates = cratesIO // rec {
-# rustlings-3.0.0
+# rustlings-4.0.0
 
-    crates.rustlings."3.0.0" = deps: { features?(features_.rustlings."3.0.0" deps {}) }: buildRustCrate {
+    crates.rustlings."4.0.0" = deps: { features?(features_.rustlings."4.0.0" deps {}) }: buildRustCrate {
       crateName = "rustlings";
-      version = "3.0.0";
+      version = "4.0.0";
       authors = [ "Marisa <mokou@posteo.de>" "Carol (Nichols || Goulding) <carol.nichols@gmail.com>" ];
       edition = "2018";
       src = exclude [ ".git" "target" ] ./.;
       crateBin =
         [{  name = "rustlings";  path = "src/main.rs"; }];
       dependencies = mapFeatures features ([
-        (cratesIO.crates."clap"."${deps."rustlings"."3.0.0"."clap"}" deps)
-        (cratesIO.crates."console"."${deps."rustlings"."3.0.0"."console"}" deps)
-        (cratesIO.crates."indicatif"."${deps."rustlings"."3.0.0"."indicatif"}" deps)
-        (cratesIO.crates."notify"."${deps."rustlings"."3.0.0"."notify"}" deps)
-        (cratesIO.crates."regex"."${deps."rustlings"."3.0.0"."regex"}" deps)
-        (cratesIO.crates."serde"."${deps."rustlings"."3.0.0"."serde"}" deps)
-        (cratesIO.crates."toml"."${deps."rustlings"."3.0.0"."toml"}" deps)
+        (cratesIO.crates."clap"."${deps."rustlings"."4.0.0"."clap"}" deps)
+        (cratesIO.crates."console"."${deps."rustlings"."4.0.0"."console"}" deps)
+        (cratesIO.crates."indicatif"."${deps."rustlings"."4.0.0"."indicatif"}" deps)
+        (cratesIO.crates."notify"."${deps."rustlings"."4.0.0"."notify"}" deps)
+        (cratesIO.crates."regex"."${deps."rustlings"."4.0.0"."regex"}" deps)
+        (cratesIO.crates."serde"."${deps."rustlings"."4.0.0"."serde"}" deps)
+        (cratesIO.crates."toml"."${deps."rustlings"."4.0.0"."toml"}" deps)
       ]);
     };
-    features_.rustlings."3.0.0" = deps: f: updateFeatures f (rec {
-      clap."${deps.rustlings."3.0.0".clap}".default = true;
-      console."${deps.rustlings."3.0.0".console}".default = true;
-      indicatif."${deps.rustlings."3.0.0".indicatif}".default = true;
-      notify."${deps.rustlings."3.0.0".notify}".default = true;
-      regex."${deps.rustlings."3.0.0".regex}".default = true;
-      rustlings."3.0.0".default = (f.rustlings."3.0.0".default or true);
+    features_.rustlings."4.0.0" = deps: f: updateFeatures f (rec {
+      clap."${deps.rustlings."4.0.0".clap}".default = true;
+      console."${deps.rustlings."4.0.0".console}".default = true;
+      indicatif."${deps.rustlings."4.0.0".indicatif}".default = true;
+      notify."${deps.rustlings."4.0.0".notify}".default = true;
+      regex."${deps.rustlings."4.0.0".regex}".default = true;
+      rustlings."4.0.0".default = (f.rustlings."4.0.0".default or true);
       serde = fold recursiveUpdate {} [
-        { "${deps.rustlings."3.0.0".serde}"."derive" = true; }
-        { "${deps.rustlings."3.0.0".serde}".default = true; }
+        { "${deps.rustlings."4.0.0".serde}"."derive" = true; }
+        { "${deps.rustlings."4.0.0".serde}".default = true; }
       ];
-      toml."${deps.rustlings."3.0.0".toml}".default = true;
+      toml."${deps.rustlings."4.0.0".toml}".default = true;
     }) [
-      (cratesIO.features_.clap."${deps."rustlings"."3.0.0"."clap"}" deps)
-      (cratesIO.features_.console."${deps."rustlings"."3.0.0"."console"}" deps)
-      (cratesIO.features_.indicatif."${deps."rustlings"."3.0.0"."indicatif"}" deps)
-      (cratesIO.features_.notify."${deps."rustlings"."3.0.0"."notify"}" deps)
-      (cratesIO.features_.regex."${deps."rustlings"."3.0.0"."regex"}" deps)
-      (cratesIO.features_.serde."${deps."rustlings"."3.0.0"."serde"}" deps)
-      (cratesIO.features_.toml."${deps."rustlings"."3.0.0"."toml"}" deps)
+      (cratesIO.features_.clap."${deps."rustlings"."4.0.0"."clap"}" deps)
+      (cratesIO.features_.console."${deps."rustlings"."4.0.0"."console"}" deps)
+      (cratesIO.features_.indicatif."${deps."rustlings"."4.0.0"."indicatif"}" deps)
+      (cratesIO.features_.notify."${deps."rustlings"."4.0.0"."notify"}" deps)
+      (cratesIO.features_.regex."${deps."rustlings"."4.0.0"."regex"}" deps)
+      (cratesIO.features_.serde."${deps."rustlings"."4.0.0"."serde"}" deps)
+      (cratesIO.features_.toml."${deps."rustlings"."4.0.0"."toml"}" deps)
     ];
 
 
@@ -54,7 +54,7 @@ rec {
 
   };
 
-  rustlings = crates.crates.rustlings."3.0.0" deps;
+  rustlings = crates.crates.rustlings."4.0.0" deps;
   __all = [ (rustlings {}) ];
   deps.aho_corasick."0.7.3" = {
     memchr = "2.2.0";
@@ -329,7 +329,7 @@ rec {
   deps.rustc_version."0.2.3" = {
     semver = "0.9.0";
   };
-  deps.rustlings."3.0.0" = {
+  deps.rustlings."4.0.0" = {
     clap = "2.33.0";
     console = "0.7.7";
     indicatif = "0.10.3";
