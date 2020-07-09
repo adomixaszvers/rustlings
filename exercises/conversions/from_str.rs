@@ -29,6 +29,9 @@ impl FromStr for Person {
         if parts.len() != 2 {
             return Err(String::from("not enough parts"));
         }
+        if parts[0].is_empty() {
+            return Err(String::from("empty name"));
+        }
         if let Ok(age) = parts[1].parse::<usize>() {
             Ok(Person { name: parts[0].into(), age })
         } else {

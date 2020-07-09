@@ -38,7 +38,7 @@ impl From<&str> for Person {
             return Person::default();
         }
         let parts: Vec<&str> = s.split(",").collect();
-        if parts.len() == 2 {
+        if parts.len() == 2 && !parts[0].is_empty() {
             if let Ok(age) = parts[1].parse::<usize>() {
                 return Person {
                     name: parts[0].into(),
