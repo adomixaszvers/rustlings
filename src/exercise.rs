@@ -167,9 +167,10 @@ path = "{}.rs""#,
     fn run(&self) -> Result<ExerciseOutput, ExerciseOutput> {
         let arg = match self.mode {
             Mode::Test => "--show-output",
-            _ => ""
+            _ => "",
         };
-        let cmd = Command::new(&temp_file()).arg(arg)
+        let cmd = Command::new(&temp_file())
+            .arg(arg)
             .output()
             .expect("Failed to run 'run' command");
 
@@ -314,7 +315,7 @@ mod test {
     #[test]
     fn test_exercise_with_output() {
         let exercise = Exercise {
-            name: "finished_exercise".into(),
+            name: "exercise_with_output".into(),
             path: PathBuf::from("tests/fixture/success/testSuccess.rs"),
             mode: Mode::Test,
             hint: String::new(),

@@ -2,9 +2,9 @@
 // Address all the TODOs to make the tests pass!
 
 enum Message {
-    Move { x: u8, y: u8 },
+    Move(Point),
     Echo(String),
-    ChangeColor(u8, u8, u8),
+    ChangeColor((u8, u8, u8)),
     Quit,
 }
 
@@ -39,9 +39,9 @@ impl State {
     fn process(&mut self, message: Message) {
         match message {
             Message::Quit => self.quit(),
-            Message::Move { x, y } => self.move_position(Point { x, y }),
+            Message::Move(p) => self.move_position(p),
             Message::Echo(s) => self.echo(s),
-            Message::ChangeColor(r, g, b) => self.change_color((r, g, b)),
+            Message::ChangeColor(t) => self.change_color(t),
         }
     }
 }
@@ -57,9 +57,9 @@ mod tests {
             position: Point { x: 0, y: 0 },
             color: (0, 0, 0),
         };
-        state.process(Message::ChangeColor(255, 0, 255));
+        state.process(Message::ChangeColor((255, 0, 255)));
         state.process(Message::Echo(String::from("hello world")));
-        state.process(Message::Move{ x: 10, y: 15 });
+        state.process(Message::Move(Point { x: 10, y: 15 }));
         state.process(Message::Quit);
 
         assert_eq!(state.color, (255, 0, 255));
