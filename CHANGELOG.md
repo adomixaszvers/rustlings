@@ -1,3 +1,47 @@
+<a name="4.3.0"></a>
+## 4.3.0 (2020-12-29)
+
+#### Features
+
+*   Rewrite default out text ([44d39112](https://github.com/rust-lang/rustlings/commit/44d39112ff122b29c9793fe52e605df1612c6490))
+*   match exercise order to book chapters (#541) ([033bf119](https://github.com/rust-lang/rustlings/commit/033bf1198fc8bfce1b570e49da7cde010aa552e3))
+*   Crab? (#586) ([fa9f522b](https://github.com/rust-lang/rustlings/commit/fa9f522b7f043d7ef73a39f003a9272dfe72c4f4))
+*   add "rustlings list" command ([838f9f30](https://github.com/rust-lang/rustlings/commit/838f9f30083d0b23fd67503dcf0fbeca498e6647))
+* **try_from_into:**  remove duplicate annotation ([04f1d079](https://github.com/rust-lang/rustlings/commit/04f1d079aa42a2f49af694bc92c67d731d31a53f))
+
+#### Bug Fixes
+
+*   update structs README ([bcf14cf6](https://github.com/rust-lang/rustlings/commit/bcf14cf677adb3a38a3ac3ca53f3c69f61153025))
+*   added missing exercises to info.toml ([90cfb6ff](https://github.com/rust-lang/rustlings/commit/90cfb6ff28377531bfc34acb70547bdb13374f6b))
+*   gives a bit more context to magic number ([30644c9a](https://github.com/rust-lang/rustlings/commit/30644c9a062b825c0ea89435dc59f0cad86b110e))
+* **functions2:**  Change signature to trigger precise error message: (#605) ([0ef95947](https://github.com/rust-lang/rustlings/commit/0ef95947cc30482e63a7045be6cc2fb6f6dcb4cc))
+* **structs1:**  Adjust wording (#573) ([9334783d](https://github.com/rust-lang/rustlings/commit/9334783da31d821cc59174fbe8320df95828926c))
+* **try_from_into:**
+  *  type error ([4f4cfcf3](https://github.com/rust-lang/rustlings/commit/4f4cfcf3c36c8718c7c170c9c3a6935e6ef0618c))
+  *  Update description (#584) ([96347df9](https://github.com/rust-lang/rustlings/commit/96347df9df294f01153b29d9ad4ba361f665c755))
+* **vec1:**  Have test compare every element in a and v ([9b6c6293](https://github.com/rust-lang/rustlings/commit/9b6c629397b24b944f484f5b2bbd8144266b5695))
+
+<a name="4.2.0"></a>
+## 4.2.0 (2020-11-07)
+
+#### Features
+
+*   Add HashMap exercises ([633c00cf](https://github.com/rust-lang/rustlings/commit/633c00cf8071e1e82959a3010452a32f34f29fc9))
+*   Add Vec exercises ([0c12fa31](https://github.com/rust-lang/rustlings/commit/0c12fa31c57c03c6287458a0a8aca7afd057baf6))
+* **primitive_types6:**  Add a test (#548) ([2b1fb2b7](https://github.com/rust-lang/rustlings/commit/2b1fb2b739bf9ad8d6b7b12af25fee173011bfc4))
+* **try_from_into:**  Add tests (#571) ([95ccd926](https://github.com/rust-lang/rustlings/commit/95ccd92616ae79ba287cce221101e0bbe4f68cdc))
+
+#### Bug Fixes
+
+*   log error output when inotify limit is exceeded ([d61b4e5a](https://github.com/rust-lang/rustlings/commit/d61b4e5a13b44d72d004082f523fa1b6b24c1aca))
+*   more unique temp_file ([5643ef05](https://github.com/rust-lang/rustlings/commit/5643ef05bc81e4a840e9456f4406a769abbe1392))
+* **installation:**  Update the MinRustVersion ([21bfb2d4](https://github.com/rust-lang/rustlings/commit/21bfb2d4777429c87d8d3b5fbf0ce66006dcd034))
+* **iterators2:**  Update description (#578) ([197d3a3d](https://github.com/rust-lang/rustlings/commit/197d3a3d8961b2465579218a6749b2b2cefa8ddd))
+* **primitive_types6:**
+  *  remove 'unused doc comment' warning ([472d8592](https://github.com/rust-lang/rustlings/commit/472d8592d65c8275332a20dfc269e7ac0d41bc88))
+  *  missing comma in test ([4fb230da](https://github.com/rust-lang/rustlings/commit/4fb230daf1251444fcf29e085cee222a91f8a37e))
+* **quiz3:**  Second test is for odd numbers, not even. (#553) ([18e0bfef](https://github.com/rust-lang/rustlings/commit/18e0bfef1de53071e353ba1ec5837002ff7290e6))
+
 <a name="4.1.0"></a>
 ## 4.1.0 (2020-10-05)
 

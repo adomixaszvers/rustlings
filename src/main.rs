@@ -25,7 +25,7 @@ mod verify;
 fn main() {
     let matches = App::new("rustlings")
         .version(crate_version!())
-        .author("Olivia Hugger, Carol Nichols")
+        .author("Marisa, Carol Nichols")
         .about("Rustlings is a collection of small exercises to get you used to writing and reading Rust code")
         .arg(
             Arg::with_name("nocapture")
@@ -53,6 +53,11 @@ fn main() {
                 .alias("h")
                 .about("Returns a hint for the current exercise")
                 .arg(Arg::with_name("name").required(true).index(1)),
+        )
+        .subcommand(
+            SubCommand::with_name("list")
+                .alias("l")
+                .about("Lists the exercises available in rustlings")
         )
         .get_matches();
 
@@ -88,6 +93,9 @@ fn main() {
     let exercises = toml::from_str::<ExerciseList>(toml_str).unwrap().exercises;
     let verbose = matches.is_present("nocapture");
 
+    if matches.subcommand_matches("list").is_some() {
+        exercises.iter().for_each(|e| println!("{}", e.name));
+    }
     if let Some(ref matches) = matches.subcommand_matches("run") {
         let name = matches.value_of("name").unwrap();
 
@@ -119,11 +127,36 @@ fn main() {
         verify(&exercises, verbose).unwrap_or_else(|_| std::process::exit(1));
     }
 
-    if matches.subcommand_matches("watch").is_some() && watch(&exercises, verbose).is_ok() {
+    if matches.subcommand_matches("watch").is_some() {
+        if let Err(e) = watch(&exercises, verbose) {
+            println!("Error: Could not watch your progess. Error message was {:?}.", e);
+            println!("Most likely you've run out of disk space or your 'inotify limit' has been reached.");
+            std::process::exit(1);
+        }
         println!(
             "{emoji} All exercises completed! {emoji}",
             emoji = Emoji("🎉", "★")
         );
+        println!();
+        println!("+----------------------------------------------------+");     
+        println!("|          You made it to the Fe-nish line!          |");       
+        println!("+--------------------------  ------------------------+");       
+        println!("                          \\/                         ");
+        println!("     ▒▒          ▒▒▒▒▒▒▒▒      ▒▒▒▒▒▒▒▒          ▒▒   ");        
+        println!("   ▒▒▒▒  ▒▒    ▒▒        ▒▒  ▒▒        ▒▒    ▒▒  ▒▒▒▒ ");        
+        println!("   ▒▒▒▒  ▒▒  ▒▒            ▒▒            ▒▒  ▒▒  ▒▒▒▒ ");        
+        println!(" ░░▒▒▒▒░░▒▒  ▒▒            ▒▒            ▒▒  ▒▒░░▒▒▒▒ ");        
+        println!("   ▓▓▓▓▓▓▓▓  ▓▓      ▓▓██  ▓▓  ▓▓██      ▓▓  ▓▓▓▓▓▓▓▓ ");        
+        println!("     ▒▒▒▒    ▒▒      ████  ▒▒  ████      ▒▒░░  ▒▒▒▒   ");      
+        println!("       ▒▒  ▒▒▒▒▒▒        ▒▒▒▒▒▒        ▒▒▒▒▒▒  ▒▒     ");    
+        println!("         ▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓▓▒▒▒▒▒▒▒▒▓▓▒▒▓▓▒▒▒▒▒▒▒▒       ");  
+        println!("           ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒         ");
+        println!("             ▒▒▒▒▒▒▒▒▒▒██▒▒▒▒▒▒██▒▒▒▒▒▒▒▒▒▒           ");
+        println!("           ▒▒  ▒▒▒▒▒▒▒▒▒▒██████▒▒▒▒▒▒▒▒▒▒  ▒▒         ");  
+        println!("         ▒▒    ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒    ▒▒       ");    
+        println!("       ▒▒    ▒▒    ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒    ▒▒    ▒▒     ");    
+        println!("       ▒▒  ▒▒    ▒▒                  ▒▒    ▒▒  ▒▒     ");    
+        println!("           ▒▒  ▒▒                      ▒▒  ▒▒         ");
         println!();
         println!("We hope you enjoyed learning about the various aspects of Rust!");
         println!("If you noticed any issues, please don't hesitate to report them to our repo.");

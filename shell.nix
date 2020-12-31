@@ -1,5 +1,7 @@
 { pkgs ? import <nixpkgs> { } }:
-let rustlings = (import ./Cargo.nix).rustlings { };
+let
+  cargo_nix = pkgs.callPackage ./Cargo.nix { };
+  rustlings = cargo_nix.rootCrate.build;
 in with pkgs;
 mkShell {
   buildInputs = [
