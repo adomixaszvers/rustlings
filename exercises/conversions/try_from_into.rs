@@ -3,6 +3,7 @@
 // instead of the target type itself.
 // You can read more about it at https://doc.rust-lang.org/std/convert/trait.TryFrom.html
 use std::convert::{TryFrom, TryInto};
+use std::error;
 
 #[derive(Debug, PartialEq)]
 struct Color {
@@ -20,22 +21,22 @@ struct Color {
 // but the slice implementation needs to check the slice length!
 // Also note that correct RGB color values must be integers in the 0..=255 range.
 
-fn try_rgb(red: i16, green: i16, blue: i16) -> Result<Color, String> {
+fn try_rgb(red: i16, green: i16, blue: i16) -> Result<Color, Box<dyn error::Error>> {
     if red < 0 || red > 255 {
-        return Err(String::from("bad number for red"));
+        return Err(String::from("bad number for red").into());
     }
     if green < 0 || green > 255 {
-        return Err(String::from("bad number for green"));
+        return Err(String::from("bad number for green").into());
     }
     if blue < 0 || blue > 255 {
-        return Err(String::from("bad number for blue"));
+        return Err(String::from("bad number for blue").into());
     }
     Ok(Color{ red: red as u8, green: green as u8, blue: blue as u8 })
 }
 
 // Tuple implementation
 impl TryFrom<(i16, i16, i16)> for Color {
-    type Error = String;
+    type Error = Box<dyn error::Error>;
     fn try_from(tuple: (i16, i16, i16)) -> Result<Self, Self::Error> {
         let (red, green, blue) = tuple;
         try_rgb(red, green, blue)
@@ -44,7 +45,7 @@ impl TryFrom<(i16, i16, i16)> for Color {
 
 // Array implementation
 impl TryFrom<[i16; 3]> for Color {
-    type Error = String;
+    type Error = Box<dyn error::Error>;
     fn try_from(arr: [i16; 3]) -> Result<Self, Self::Error> {
         try_rgb(arr[0], arr[1], arr[2])
     }
@@ -52,10 +53,10 @@ impl TryFrom<[i16; 3]> for Color {
 
 // Slice implementation
 impl TryFrom<&[i16]> for Color {
-    type Error = String;
+    type Error = Box<dyn error::Error>;
     fn try_from(slice: &[i16]) -> Result<Self, Self::Error> {
         if slice.len() != 3 {
-            return Err(String::from("wrong slice length"))
+            return Err(String::from("wrong slice length").into())
         }
         try_rgb(slice[0], slice[1], slice[2])
     }
@@ -97,41 +98,43 @@ mod tests {
     }
     #[test]
     fn test_tuple_correct() {
-        let c: Result<Color, String> = (183, 65, 14).try_into();
+        let c: Result<Color, _> = (183, 65, 14).try_into();
+        assert!(c.is_ok());
         assert_eq!(
-            c,
-            Ok(Color {
+            c.unwrap(),
+            Color {
                 red: 183,
                 green: 65,
                 blue: 14
-            })
+            }
         );
     }
     #[test]
     fn test_array_out_of_range_positive() {
-        let c: Result<Color, String> = [1000, 10000, 256].try_into();
+        let c: Result<Color, _> = [1000, 10000, 256].try_into();
         assert!(c.is_err());
     }
     #[test]
     fn test_array_out_of_range_negative() {
-        let c: Result<Color, String> = [-10, -256, -1].try_into();
+        let c: Result<Color, _> = [-10, -256, -1].try_into();
         assert!(c.is_err());
     }
     #[test]
     fn test_array_sum() {
-        let c: Result<Color, String> = [-1, 255, 255].try_into();
+        let c: Result<Color, _> = [-1, 255, 255].try_into();
         assert!(c.is_err());
     }
     #[test]
     fn test_array_correct() {
-        let c: Result<Color, String> = [183, 65, 14].try_into();
+        let c: Result<Color, _> = [183, 65, 14].try_into();
+        assert!(c.is_ok());
         assert_eq!(
-            c,
-            Ok(Color {
+            c.unwrap(),
+            Color {
                 red: 183,
                 green: 65,
                 blue: 14
-            })
+            }
         );
     }
     #[test]
@@ -152,14 +155,15 @@ mod tests {
     #[test]
     fn test_slice_correct() {
         let v = vec![183, 65, 14];
-        let c: Result<Color, String> = Color::try_from(&v[..]);
+        let c: Result<Color, _> = Color::try_from(&v[..]);
+        assert!(c.is_ok());
         assert_eq!(
-            c,
-            Ok(Color {
+            c.unwrap(),
+            Color {
                 red: 183,
                 green: 65,
                 blue: 14
-            })
+            }
         );
     }
     #[test]
