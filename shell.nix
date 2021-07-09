@@ -11,10 +11,9 @@ mkShell {
     rustPackages.clippy
     rustPackages.rustfmt
     rustlings
-    rls
+    rust-analyzer
   ];
   shellHook = ''
     export RUST_SRC_PATH="${rustPlatform.rustcSrc}"
-    export RACER_CMD="${rustracer}/bin/racer"
   '';
 }

@@ -838,6 +838,97 @@
       "contributions": [
         "content"
       ]
+    },
+    {
+      "login": "stoiandan",
+      "name": "Stoian Dan",
+      "avatar_url": "https://avatars.githubusercontent.com/u/10388612?v=4",
+      "profile": "https://github.com/stoiandan",
+      "contributions": [
+        "content"
+      ]
+    },
+    {
+      "login": "PiDelport",
+      "name": "Pi Delport",
+      "avatar_url": "https://avatars.githubusercontent.com/u/630271?v=4",
+      "profile": "https://about.me/pjdelport",
+      "contributions": [
+        "content"
+      ]
+    },
+    {
+      "login": "sateeshkumarb",
+      "name": "Sateesh ",
+      "avatar_url": "https://avatars.githubusercontent.com/u/429263?v=4",
+      "profile": "https://github.com/sateeshkumarb",
+      "contributions": [
+        "code",
+        "content"
+      ]
+    },
+    {
+      "login": "kayuapi",
+      "name": "ZC",
+      "avatar_url": "https://avatars.githubusercontent.com/u/10304328?v=4",
+      "profile": "https://github.com/kayuapi",
+      "contributions": [
+        "content"
+      ]
+    },
+    {
+      "login": "hyperparabolic",
+      "name": "hyperparabolic",
+      "avatar_url": "https://avatars.githubusercontent.com/u/12348474?v=4",
+      "profile": "https://github.com/hyperparabolic",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "kolbma",
+      "name": "arlecchino",
+      "avatar_url": "https://avatars.githubusercontent.com/u/5228369?v=4",
+      "profile": "https://www.net4visions.at",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "jazzplato",
+      "name": "Richthofen",
+      "avatar_url": "https://avatars.githubusercontent.com/u/7576730?v=4",
+      "profile": "https://richthofen.io/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "cseltol",
+      "name": "Ivan Nerazumov",
+      "avatar_url": "https://avatars.githubusercontent.com/u/64264529?v=4",
+      "profile": "https://github.com/cseltol",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "lauralindzey",
+      "name": "lauralindzey",
+      "avatar_url": "https://avatars.githubusercontent.com/u/65185744?v=4",
+      "profile": "https://github.com/lauralindzey",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "sinharaksh1t",
+      "name": "Rakshit Sinha",
+      "avatar_url": "https://avatars.githubusercontent.com/u/28585848?v=4",
+      "profile": "https://github.com/sinharaksh1t",
+      "contributions": [
+        "content"
+      ]
     }
   ],
   "contributorsPerLine": 8,
